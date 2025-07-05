@@ -1,30 +1,31 @@
-# Hanauer-style ML Mispricing Model
+# CANSLIM Stock Screener
 
-이 프로젝트는 FMP와 SEC 데이터를 이용해 주식별 내재가치와 시장가격 차이를 계산하고, 머신러닝으로 기대수익률을 예측하여 롱숏 전략을 백테스트합니다.
+This project provides a simple command line interface to screen U.S. stocks using
+the CANSLIM methodology powered by the Financial Modeling Prep Ultimate API.
 
-## 설치
-```bash
-pip install -r requirements.txt
-```
+## Setup
 
-## 실행 예시
-```python
-from src.fetcher import fetch_fmp
-from src.features import compute_features
-from src.model import MispricingModel
-from src.signal import generate_signals
-from src.backtest import run_backtest
-```
+1. Create a `.env` file in the project root containing your API key.
 
-## 환경 변수
-`.env` 파일에 API 키를 설정하세요.
-```env
-FMP_KEY=<...>
-SEC_AGENT=Mozilla/5.0 (X11; Codex Bot)
-```
+   ```env
+   FMP_KEY=YOUR_FMP_KEY
+   ```
 
-## 테스트
-```bash
-black -q .
-pytest -q
-```
+2. Install the required packages:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the screener:
+
+   ```bash
+   python src/canslim.py
+   ```
+
+The program prints the passing tickers and their key metrics and also saves a
+timestamped CSV named `canslim_YYYYMMDD_HHMMSS.csv` in the project root.
+
+![console screenshot](docs/screenshot.png)
+
+You can view an example CSV at [`docs/sample.csv`](docs/sample.csv).
