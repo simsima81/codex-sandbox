@@ -1,11 +1,4 @@
-pandas
-numpy
-scikit-learn
-lightgbm
-xgboost
-vectorbt
-requests
-python-dotenv
-black
-flake8==7.0.0 # style checks
-pytest
+pandas>=2.2,<2.3
+requests>=2.31,<3
+tqdm>=4.66,<5
+python-dotenv>=1,<2
